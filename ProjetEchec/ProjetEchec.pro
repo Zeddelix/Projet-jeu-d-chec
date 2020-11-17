@@ -9,7 +9,9 @@ CONFIG -= app_bundle
 
 SOURCES += \
         main.cpp \
-        piece.cpp
+        piece.cpp \
+        pieceTest.cpp \
+        testmain.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
