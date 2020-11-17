@@ -5,12 +5,11 @@
 
 namespace chest {
 
-class dame : public Piece
+class dame : public tour, public fou
 {
     virtual ~dame();
     virtual bool PeutDeplacer(Plateau p,case dep, cas arr) override;
     virtual std::string nom() const override;
-    virtual void Deplacer(case arr) override;
 };
 
 

@@ -15,7 +15,6 @@ public:
     virtual ~Piece();
     virtual bool PeutDeplacer(Plateau p,case dep, cas arr) = 0;
     virtual std::string nom() const = 0;
-    virtual void Deplacer(case arr) = 0;
     bool couleur() const;
     std::string image() const;
 private:
