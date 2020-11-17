@@ -2,19 +2,25 @@
 #define PIECE_H
 
 #include <string>
+#include "plateau.h"
+#include "case.h"
 
-namespace Ui { class Piece; }
+
+namespace chest {
 
 class Piece
 {
 public:
-    Piece();
+    Piece(const bool couleur, std::string image);
     virtual ~Piece();
     virtual bool PeutDeplacer(Plateau p,case dep, cas arr) = 0;
-    virtual std::string nom() const;
+    virtual std::string nom() const = 0;
     virtual void Deplacer(case arr) = 0;
 private:
     bool d_couleur;
     std::string d_image;
 };
 #endif // PIECE_H
+
+
+}
