@@ -9,7 +9,6 @@ class dame : public tour, public fou
 {
     virtual ~dame();
     virtual bool PeutDeplacer(Plateau p,case dep, cas arr) override;
-    virtual std::string nom() const override;
 };
 
 
