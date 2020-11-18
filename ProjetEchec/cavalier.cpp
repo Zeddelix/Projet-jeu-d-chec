@@ -4,17 +4,8 @@
 #include <QPoint>
 
 
-Cavalier::Cavalier(bool couleur, QString nom) : d_nom{nom}
-{
-    if(couleur)
-         {
-            d_image=
-         }
-    else
-         {
-            d_image=
-         }
-}
+Cavalier::Cavalier(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
+{}
 
 virtual bool Cavalier::PeutDeplacer(plateau P, casDep, casArriv) override
 {

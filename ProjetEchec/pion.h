@@ -14,8 +14,9 @@ public:
 
 
 private:
-    QString d_image;
+    QPixmap* d_image;
     QString d_nom;
+
 
 
 };
