@@ -8,23 +8,6 @@
 Cavalier::Cavalier(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
 {}
 
-Cavalier::Cavalier(bool couleur, QString nom) : d_nom{nom}
-{
-    if(couleur)
-         {
-            d_image=
-         }
-    else
-         {
-            d_image=
-         }
-}
-<<<<<<< HEAD
-=======
-
->>>>>>> Gaulthier
-
-
 bool Cavalier::peutDeplacer(const Plateau& P, QPoint casDep, QPoint casArriv, const bool couleur)
 {
     int x = casArriv.x()-casDep.x();

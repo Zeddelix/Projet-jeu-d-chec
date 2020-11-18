@@ -80,7 +80,7 @@ bool Pion::peutDeplacer(const Plateau& P, QPoint casDep, QPoint casArriv, const 
         }
     }
 
-<<<<<<< HEAD
+
     else//le pion est noir, blanc en bas
     {
         if (x==0 && y==-1)
@@ -97,19 +97,9 @@ bool Pion::peutDeplacer(const Plateau& P, QPoint casDep, QPoint casArriv, const 
         }
     }
     return false;
-=======
+
      }
 
 
 }
 
-bool Pion::PeutDeplacer(const Plateau& P, QPoint casDep, QPoint casArriv, QVector<QPoint> Deplacements)
-{
-    deplacementPossible(const Plateau& P, QPoint casDep);
-    for (int i=0; i<deplacementPossible.size(), i++)
-    { if casArriv==i return true; }
-    else return false;
-
->>>>>>> Gaulthier
-
-}
