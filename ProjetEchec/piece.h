@@ -4,23 +4,27 @@
 #include <string>
 #include "plateau.h"
 #include "case.h"
+#include <QObject>
+#include <QString>
 
 
 namespace chest {
 
-class Piece
+class piece
 {
 public:
-    Piece(const bool couleur, std::string image, std::string nom);
-    virtual ~Piece();
+    piece(const bool couleur,QPixmap* image,const QString nom);
+    virtual ~piece();
     virtual bool PeutDeplacer(Plateau p,case dep, cas arr) = 0;
-    std::string nom() const;
+    QString nom() const;
     bool couleur() const;
-    std::string image() const;
+    QPixmap *image() const;
+    QVector <QPoint> tabDeplacementPossible (const plateau& P, QPoint casDep);
 private:
-    std::string d_nom;
+    QString d_nom;
     bool d_couleur;
-    std::string d_image;
+    QPixmap *d_image;
+    bool premierDeplacement;
 };
 #endif // PIECE_H
 

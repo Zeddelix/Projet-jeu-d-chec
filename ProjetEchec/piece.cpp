@@ -5,27 +5,27 @@ namespace chest {
 
 
 
-Piece::Piece(const bool couleur, std::string image,std::string nom) : d_nom{nom}, d_couleur{couleur} ,  d_image{image}
-    {}
+piece::piece(const bool couleur,QPixmap* image,const QString nom) : d_nom{nom}, d_couleur{couleur} ,  d_image{image}
+{}
 
-    Piece::~Piece() {}
+    piece::~piece() {}
 
 
-    bool Piece::couleur() const
+    bool piece::couleur() const
     {
         return d_couleur;
     }
 
-    std::string Piece::image() const
+    QPixmap* piece::image() const
     {
         return d_image;
     }
 
-    std::string Piece::nom() const
+    QString piece::nom() const
     {
 
-        std::string couleur;
-        if(d_couleur)
+        QString couleur;
+        if(d_couleur == 0)
         {
             couleur = "blanc";
         }
@@ -36,5 +36,10 @@ Piece::Piece(const bool couleur, std::string image,std::string nom) : d_nom{nom}
 
         return d_nom + couleur;
     }
+
+}
+
+ QVector<QPoint> piece::tabDeplacementPossible(const plateau& P, QPoint casDep)
+{
 
 }
