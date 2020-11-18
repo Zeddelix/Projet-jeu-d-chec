@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.13.2, 2020-11-18T18:17:38. -->
+=======
+<!-- Written by QtCreator 4.13.2, 2020-11-18T16:45:27. -->
+>>>>>>> Gaulthier
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>

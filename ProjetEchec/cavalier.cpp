@@ -19,6 +19,10 @@ Cavalier::Cavalier(bool couleur, QString nom) : d_nom{nom}
             d_image=
          }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> Gaulthier
 
 
 bool Cavalier::peutDeplacer(const Plateau& P, QPoint casDep, QPoint casArriv, const bool couleur)
