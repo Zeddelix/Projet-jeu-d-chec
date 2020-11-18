@@ -6,16 +6,17 @@
 class Cavalier : public Piece
 {
 public:
-    Cavalier();
+    Cavalier(bool couleur, QString nom);
     ~Cavalier();
-    virtual Qimage d_i override;
+    virtual bool peutDeplacer(const Plateau& P, QPoint depart, QPoint arrivee) override;
 
 
 private:
-    virtual bool PeutDeplacer(Plateau P, casDep, casArriv) override
-    virtual const string d_nom=Cavalier override;
+    QString d_image;
+    QString d_nom;
 
 
 };
+
 
 #endif // CAVALIER_H
