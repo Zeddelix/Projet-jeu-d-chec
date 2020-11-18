@@ -1,19 +1,21 @@
 #ifndef PION_H
 #define PION_H
-
+#include <QString>
 #include <QObject>
+#include <QPoint>
 
 class Pion : public Piece
 {
 public:
-    Pion();
+    Pion(bool couleur, QString nom);
     ~Pion();
-    virtual Qimage d_i override
+    virtual bool peutDeplacer(const Plateau& P, QPoint depart, QPoint arrivee) override;
+    virtual QVector <QPoint> deplacementPossible (const Plateau& P, QPoint casDep);
 
 
 private:
-    virtual bool PeutDeplacer(Plateau P, casDep, casArriv) override
-    virtual const string d_nom=pion override;
+    QString d_image;
+    QString d_nom;
 
 
 };
