@@ -11,13 +11,14 @@ namespace chest {
 class Piece
 {
 public:
-    Piece(const bool couleur, std::string image);
+    Piece(const bool couleur, std::string image, std::string nom);
     virtual ~Piece();
     virtual bool PeutDeplacer(Plateau p,case dep, cas arr) = 0;
-    virtual std::string nom() const = 0;
+    std::string nom() const;
     bool couleur() const;
     std::string image() const;
 private:
+    std::string d_nom;
     bool d_couleur;
     std::string d_image;
 };

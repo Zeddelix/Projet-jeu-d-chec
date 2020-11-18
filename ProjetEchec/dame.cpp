@@ -10,10 +10,5 @@ dame::~dame() {}
     return fou::PeutDeplacer(p,dep,arr) || tour::PeutDeplacer(p,dep,arr);
  }
 
-std::string dame::nom() const
-{
-    return "dame";
-}
-
 
 }
