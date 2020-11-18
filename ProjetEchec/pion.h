@@ -14,9 +14,14 @@ public:
 
 
 private:
+<<<<<<< HEAD
     QPixmap* d_image;
     QString d_nom;
 
+=======
+    QString d_image;
+    QString d_nom;
+>>>>>>> Gaulthier
 
 
 };
