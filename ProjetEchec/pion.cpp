@@ -4,7 +4,6 @@
 #include <QPoint>
 #include <QVector>
 
-<<<<<<< HEAD
 Pion::Pion(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
 {}
 
@@ -42,7 +41,7 @@ bool Pion::peutDeplacer(const Plateau& P, QPoint casDep, QPoint casArriv, QVecto
     { if (casArriv==deplacementPossible[i]) return true;
         else return false;
     }
-=======
+}
 Pion::Pion(bool couleur, QString nom) : d_nom{nom}
 {
     if(couleur)
@@ -86,7 +85,7 @@ bool Pion::PeutDeplacer(const Plateau& P, QPoint casDep, QPoint casArriv, QVecto
     for (int i=0; i<deplacementPossible.size(), i++)
     { if casArriv==i return true; }
     else return false;
->>>>>>> Gaulthier
+
 
 }
 
