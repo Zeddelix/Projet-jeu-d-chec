@@ -21,7 +21,10 @@ Cavalier::Cavalier(bool couleur, QString nom) : d_nom{nom}
 }
 
 
-virtual bool Cavalier::PeutDeplacer(plateau P, casDep, casArriv) override
+bool Cavalier::peutDeplacer(const Plateau& P, QPoint casDep, QPoint casArriv, const bool couleur)
 {
-    // Faire un tableau de booléen ?
+    int x = casArriv.x()-casDep.x();
+    int y = casArriv.y() - casDep.y();
+    if ((abs(x==1) && abs(y==2) || (abs(x==2) && abs(y==1)) && ((P.getPiece(casArriv.x(), casArriv.y()).isEmpty()) || P.getPiece(casArriv.x(), casArriv.y()).couleur()!=couleur) return true;
+    else return false;
 }
