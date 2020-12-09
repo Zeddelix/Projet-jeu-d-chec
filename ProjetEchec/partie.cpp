@@ -1,7 +1,5 @@
 #include "partie.h"
 #include <iostream>
-#include <memory>
-
 /** a supprimer*/
 #include "roi.h"
 
@@ -9,8 +7,11 @@ partie::partie()
 {
     QPixmap image; //a enlever
     //ajouter les types dès qu'ils seront ajouter au projet
+    //auto d = std::make_unique<roi>(0,image,"tour1");
+    //d_plateau[0][0] = std::make_unique<roi>(0,image,"tour1");
 
     d_plateau.resize(8);
+
     d_plateau[0].push_back(std::make_unique <roi>(0,image,"tour1"));
     d_plateau[0].push_back(std::make_unique <roi>(0,image,"cavalier1"));
     d_plateau[0].push_back(std::make_unique <roi>(0,image,"fou1"));
@@ -51,17 +52,18 @@ partie::partie()
     d_plateau[7].push_back(std::make_unique <roi>(1,image,"fou2"));
     d_plateau[7].push_back(std::make_unique <roi>(1,image,"cavalier2"));
     d_plateau[7].push_back(std::make_unique <roi>(1,image,"tour2"));
+
 }
 
 void partie::afficher()const
 {}
 
-void partie::affichageCase(QPoint c)const
+void partie::affichageCase(QPoint *c)const
 {}
 
-void partie::deplacePiece(QPoint depart,QPoint arrivee)
+void partie::deplacePiece(QPoint *depart,QPoint *arrivee)
 {
-    d_plateau[arrivee.x()][arrivee.y()]=move(d_plateau[depart.x()][depart.y()]);
+    //d_plateau[arrivee->x()][arrivee->y()]=move(d_plateau[depart->x()][depart->y()]);
     affichageCase(depart);
     affichageCase(arrivee);
 }

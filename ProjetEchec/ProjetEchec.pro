@@ -10,6 +10,7 @@ CONFIG -= app_bundle
 SOURCES += \
         main.cpp \
         partie.cpp \
+        piece.cpp \
         roi.cpp
 
 # Default rules for deployment.
@@ -19,6 +20,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     partie.h \
+    piece.h \
     roi.h
 
 QT += widgets
