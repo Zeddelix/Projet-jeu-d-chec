@@ -39,7 +39,7 @@ bool tour::peutDeplacer(const partie& P, const QPoint depart, const QPoint arriv
     }
 
     if(xArrive == xCalcul && yArrive != yCalcul){
-        if(!P[xCalcul][yCalcul] == nullptr){
+        if(P[xCalcul][yCalcul] != nullptr){
             return P[xCalcul][yCalcul] -> color != P[xDepart][yDepart] -> color;
         }
         else return true;

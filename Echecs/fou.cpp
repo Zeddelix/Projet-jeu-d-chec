@@ -32,14 +32,14 @@ bool fou::peutDeplacer(const partie& P, const QPoint depart, const QPoint arrive
     xCalcul = xDepart + xPas;
     yCalcul = yDepart + yPas;
 
-    while(xArrive != xCalcul && P.getPiece(xCalcul, yCalcul).isEmpty()){
+    while(xArrive != xCalcul && P[xCalcul][yCalcul] == nullptr){
         xCalcul += xPas;
         yCalcul += yPas;
     }
 
     if(xArrive == xCalcul){
-        if(!P.getPiece(xCalcul, yCalcul).isEmpty()){
-            return P.getPiece(xCalcul, yCalcul).color() != P.getPiece(xDepart, yDepart).color();
+        if(P[xCalcul][yCalcul] != nullptr)){
+            return P[xCalcul][yCalcul] -> color != P[xDepart][yDepart] -> color;
         }
         else return true;
     }
