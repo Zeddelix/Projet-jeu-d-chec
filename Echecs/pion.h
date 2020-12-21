@@ -8,15 +8,8 @@
 class Pion : public piece
 {
 public:
-    Pion(bool couleur, QPixmap image,  QString nom);
-    ~Pion();
-    virtual bool peutDeplacer(const partie& P, const QPoint depart, const QPoint arrivee, const bool couleur) override;
-
-
-private:
-    QPixmap* d_image;
-    QString d_nom;
-
+    Pion(bool couleur, QPixmap image, QString nom);
+    virtual bool peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 
 
 };
