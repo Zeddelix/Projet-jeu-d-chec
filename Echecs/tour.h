@@ -1,14 +1,22 @@
 #ifndef TOUR_H
 #define TOUR_H
 
+#include <QString>
 #include <QObject>
+#include <QPoint>
+#include <QVector>
+#include <QtWidgets/QWidget>
+#include <partie.h>
 
-class Tour : public piece
+namespace chest {
+
+class tour : public piece
 {
+
 public:
-    Tour(bool couleur, QString image, QString nom);
-    ~Tour();
-    virtual bool peutDeplacer(const Plateau& P, QPoint depart, QPoint arrivee) override;
+    tour(bool couleur, QString image, QString nom);
+    ~tour();
+    virtual bool peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 
 
 private:
@@ -17,6 +25,8 @@ private:
 
 
 };
-
-
 #endif // TOUR_H
+
+}
+
+

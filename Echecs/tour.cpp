@@ -1,5 +1,9 @@
 #include "tour.h"
 #include <cmath>
+#include <QString>
+#include <QObject>
+#include <QPoint>
+#include <QVector>
 
 namespace chest {
 
@@ -10,7 +14,7 @@ tour::tour()
 
 }
 
-bool tour::peutDeplacer(const partie& P, const QPoint depart, const QPoint arrive, const bool couleur)
+bool tour::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override
 {
     bool deplacement = false;
     int xDepart = depart.x(), yDepart = depart.y();
@@ -39,8 +43,8 @@ bool tour::peutDeplacer(const partie& P, const QPoint depart, const QPoint arriv
     }
 
     if(xArrive == xCalcul && yArrive != yCalcul){
-        if(P[xCalcul][yCalcul] != nullptr){
-            return P[xCalcul][yCalcul] -> color != P[xDepart][yDepart] -> color;
+        if(p[xCalcul][yCalcul] != nullptr){
+            return p[xCalcul][yCalcul] -> color != p[xDepart][yDepart] -> color;
         }
         else return true;
     }
