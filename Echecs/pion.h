@@ -11,7 +11,7 @@ class pion : public piece
 {
 public:
     pion(bool couleur, QPixmap image, QString nom);
-    virtual bool peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
+    virtual bool peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 
 
 };

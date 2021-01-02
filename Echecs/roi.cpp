@@ -7,7 +7,7 @@ roi::roi(const bool couleur,QPixmap image, const QString nom) : piece{couleur,im
 
 
 //precondition: arrivee et depart sont sur le plateau (arrivee tombe à l'eau)
-bool roi::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &P, const QPoint *depart,const QPoint *arrivee,const bool couleur)//ici P est inutile
+bool roi::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &P, const QPoint *depart,const QPoint *arrivee,const bool couleur)//ici P est inutile
 {
     bool deplacement=0;
     int xD=depart->x();

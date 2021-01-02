@@ -11,7 +11,7 @@ pion::pion(const bool couleur,QPixmap image, const QString nom) : piece{couleur,
 {}
 
 
-bool pion::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
+bool pion::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
     int x = arrivee->x() - depart->x();
     int y = arrivee->y() - depart->y();

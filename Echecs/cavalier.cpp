@@ -9,7 +9,7 @@ namespace chest {
 cavalier::cavalier(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
 {}
 
-bool cavalier::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
+bool cavalier::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
     int x = depart->x() - arrivee->x();
     int y = depart->y() - arrivee->y();

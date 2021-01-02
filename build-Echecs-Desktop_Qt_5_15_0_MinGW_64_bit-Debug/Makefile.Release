@@ -545,21 +545,21 @@ release/main.o: ../Echecs/main.cpp C:/Qt/5.15.0/mingw81_64/include/QtCore/QCoreA
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qcontainerfwd.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qobject_impl.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qeventloop.h \
-		../Echecs/dame.h \
-		../Echecs/piece.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/QObject \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QWidget \
-		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qapplication.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtwidgetsglobal.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtguiglobal.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtgui-config.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qtwidgets-config.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qwindowdefs.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsize.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qmargins.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qcursor.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qwidget.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpaintdevice.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qrect.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtCore/qsize.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qpalette.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qcolor.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qrgb.h \
@@ -583,7 +583,6 @@ release/main.o: ../Echecs/main.cpp C:/Qt/5.15.0/mingw81_64/include/QtCore/QCoreA
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qfontmetrics.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qfontinfo.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qsizepolicy.h \
-		C:/Qt/5.15.0/mingw81_64/include/QtGui/qcursor.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qkeysequence.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qevent.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qvariant.h \
@@ -599,12 +598,21 @@ release/main.o: ../Echecs/main.cpp C:/Qt/5.15.0/mingw81_64/include/QtCore/QCoreA
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/qfiledevice.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qvector2d.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtGui/qinputmethod.h \
+		../Echecs/dame.h \
+		../Echecs/piece.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtCore/QObject \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QWidget \
 		../Echecs/fou.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/QString \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/QPoint \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/QVector \
 		../Echecs/partie.h \
-		../Echecs/tour.h
+		../Echecs/tour.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QMessageBox \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Echecs\main.cpp
 
 release/partie.o: ../Echecs/partie.cpp ../Echecs/partie.h \
@@ -720,7 +728,10 @@ release/partie.o: ../Echecs/partie.cpp ../Echecs/partie.h \
 		C:/Qt/5.15.0/mingw81_64/include/QtCore/QPoint \
 		../Echecs/cavalier.h \
 		../Echecs/fou.h \
-		../Echecs/pion.h
+		../Echecs/pion.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/QMessageBox \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/5.15.0/mingw81_64/include/QtWidgets/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\partie.o ..\Echecs\partie.cpp
 
 release/piece.o: ../Echecs/piece.cpp ../Echecs/piece.h \

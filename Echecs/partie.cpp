@@ -6,7 +6,9 @@
 #include "cavalier.h"
 #include "fou.h"
 #include "pion.h"
+#include "QMessageBox"
 
+//initialisation de la partie càd du plateau et des pièces
 chest::partie::partie()
 {
     QPixmap image; //a enlever
@@ -65,9 +67,62 @@ void chest::partie::afficher()const
 void chest::partie::affichageCase(QPoint *c)const
 {}
 
-void chest::partie::deplacePiece(QPoint *depart,QPoint *arrivee)
+void chest::partie::deplacePiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *depart,QPoint *arrivee,bool joueur)
 {
-    //d_plateau[arrivee->x()][arrivee->y()]=move(d_plateau[depart->x()][depart->y()]);
-    affichageCase(depart);
-    affichageCase(arrivee);
+
 }
+
+
+bool chest::partie::estVide(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur) //verrifie que la piece appartient au joueur à qui c'est le tour
+{
+    if (p[depart.x()][depart.y()]==nullptr)//cas case vide
+    {
+        return true;
+    }
+
+    return false;
+
+}
+
+bool chest::partie::pionCorrect(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur)
+{
+    if(p[depart.x()][depart.y()]->couleur() != joueur)
+    {
+        return false;
+    }
+    else
+        return true;
+
+}
+
+bool chest::partie::estUnAdversaire(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur)
+{
+     if (p[depart.x()][depart.y()]->couleur()==joueur)//cas pion de son équipe
+        {
+         return false;
+        }
+        else    //cas pion adverse
+        {
+            return true;
+        }
+}
+
+bool chest::partie::selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece> > > &p, QPoint *depart, QPoint *arrivee, bool joueur)
+{
+   if(estVide(p,*depart,joueur))
+   {
+       QMessageBox msgBox;
+       msgBox.setText("Case vide.");
+       msgBox.exec();
+       return false;
+   }
+   else
+   {
+        if(pionCorrect(p,*depart,joueur) == false)
+        {
+
+        }
+   }
+}
+
+

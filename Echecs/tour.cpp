@@ -12,7 +12,7 @@ namespace chest {
 tour::tour(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
 {}
 
-bool tour::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
+bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
     int xDepart = depart -> x(), yDepart = depart -> y();
     int xArrive = arrivee -> x(), yArrive= arrivee -> y();
