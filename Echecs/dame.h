@@ -2,13 +2,16 @@
 #define DAME_H
 
 #include "piece.h"
+#include "fou.h"
+#include "tour.h"
 
 namespace chest {
 
 class dame : public tour, public fou
 {
-    virtual ~dame();
-    virtual bool PeutDeplacer(Plateau p,case dep, cas arr) override;
+public:
+    dame(bool couleur, QPixmap image, QString nom);
+    virtual bool peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 };
 
 

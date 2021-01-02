@@ -16,13 +16,6 @@ class tour : public piece
 public:
     tour(bool couleur, QPixmap image, QString nom);
     virtual bool peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
-
-
-private:
-    QPixmap* d_image;
-    QString d_nom;
-
-
 };
 
 }

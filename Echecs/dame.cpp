@@ -1,13 +1,14 @@
 #include "dame.h"
 
-
 namespace chest {
 
-dame::~dame() {}
+dame::dame(bool couleur, QPixmap image, QString nom) : tour{couleur,image,nom} , fou{couleur,image,nom}
+{}
 
- bool dame::PeutDeplacer(Plateau p,case dep, cas arr)
+ bool dame::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
  {
-    return fou::PeutDeplacer(p,dep,arr) || tour::PeutDeplacer(p,dep,arr);
+    return fou::peutDeplacer(p,depart,arrivee,couleur) || tour::peutDeplacer(p,depart,arrivee,couleur);
+
  }
 
 
