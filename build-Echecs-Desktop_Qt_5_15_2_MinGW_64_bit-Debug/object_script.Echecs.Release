@@ -1,0 +1,11 @@
+release/cavalier.o
+release/dame.o
+release/fenetreconnexion.o
+release/fou.o
+release/main.o
+release/partie.o
+release/piece.o
+release/pion.o
+release/roi.o
+release/tour.o
+release/moc_fenetreconnexion.o
