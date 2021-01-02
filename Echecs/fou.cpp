@@ -10,7 +10,7 @@ fou::fou()
 
 }
 
-bool fou::peutDeplacer(const partie& P, const QPoint depart, const QPoint arrive, const bool couleur)
+bool fou::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override
 {
     bool deplacement = false;
     int xDepart = depart.x(), yDepart = depart.y();
@@ -38,8 +38,8 @@ bool fou::peutDeplacer(const partie& P, const QPoint depart, const QPoint arrive
     }
 
     if(xArrive == xCalcul){
-        if(P[xCalcul][yCalcul] != nullptr)){
-            return P[xCalcul][yCalcul] -> color != P[xDepart][yDepart] -> color;
+        if(p[xCalcul][yCalcul] != nullptr)){
+            return p[xCalcul][yCalcul] -> color != p[xDepart][yDepart] -> color;
         }
         else return true;
     }

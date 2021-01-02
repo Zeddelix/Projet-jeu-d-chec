@@ -3,12 +3,12 @@
 
 #include <QObject>
 
-class Tour : public piece
+class tour : public piece
 {
 public:
-    Tour(bool couleur, QString image, QString nom);
-    ~Tour();
-    virtual bool peutDeplacer(const Plateau& P, QPoint depart, QPoint arrivee) override;
+    tour(bool couleur, QString image, QString nom);
+    ~tour();
+    virtual bool peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 
 
 private:
