@@ -1,18 +1,15 @@
 #include "tour.h"
 #include <cmath>
+
 #include <QString>
 #include <QObject>
 #include <QPoint>
 #include <QVector>
+#include <QtWidgets/QWidget>
+#include <partie.h>
 
 namespace chest {
-
-tour::~tour() {}
-
-tour::tour()
-{
-
-}
+tour::tour(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
 
 bool tour::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override
 {

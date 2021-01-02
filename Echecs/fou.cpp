@@ -1,18 +1,15 @@
 #include "fou.h"
 #include <cmath>
+
 #include <QString>
 #include <QObject>
 #include <QPoint>
 #include <QVector>
+#include <QtWidgets/QWidget>
+#include <partie.h>
 
 namespace chest {
-
-fou::~fou() {}
-
-fou::fou()
-{
-
-}
+fou::fou(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
 
 bool fou::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override
 {
@@ -36,7 +33,7 @@ bool fou::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const 
     xCalcul = xDepart + xPas;
     yCalcul = yDepart + yPas;
 
-    while(xArrive != xCalcul && P[xCalcul][yCalcul] == nullptr){
+    while(xArrive != xCalcul && p[xCalcul][yCalcul] == nullptr){
         xCalcul += xPas;
         yCalcul += yPas;
     }
