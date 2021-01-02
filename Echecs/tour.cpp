@@ -9,16 +9,15 @@
 #include <partie.h>
 
 namespace chest {
-tour::tour(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
+tour::tour(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
+{}
 
-bool tour::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override
+bool tour::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
-    bool deplacement = false;
-    int xDepart = depart.x(), yDepart = depart.y();
-    int xArrive = arrive.x(), yArrive= arrive.y();
-
-    if(xDepart == xArrive)
-        return false;
+    int xDepart = depart -> x(), yDepart = depart -> y();
+    int xArrive = arrivee -> x(), yArrive= arrivee -> y();
+    int xPas, yPas;
+    int xCalcul, yCalcul;
 
 
 	if(xDepart != xArrive){
@@ -34,14 +33,14 @@ bool tour::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const
     xCalcul = xDepart + xPas;
     yCalcul = yDepart + yPas;
 
-    while(xArrive != xCalcul && yArrive != yCalcul && P[xCalcul][yCalcul] == nullptr){
+    while(xArrive != xCalcul && yArrive != yCalcul && p[xCalcul][yCalcul] == nullptr){
         xCalcul += xPas;
         yCalcul += yPas;
     }
 
     if(xArrive == xCalcul && yArrive != yCalcul){
         if(p[xCalcul][yCalcul] != nullptr){
-            return p[xCalcul][yCalcul] -> color != p[xDepart][yDepart] -> color;
+            return p[xCalcul][yCalcul] -> couleur() != couleur;
         }
         else return true;
     }

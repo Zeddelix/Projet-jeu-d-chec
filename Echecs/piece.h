@@ -5,6 +5,8 @@
 #include <QWidget>
 #include <memory>
 
+namespace chest {
+
 /** a suprimer*/
 class piece
 {
@@ -23,5 +25,6 @@ private:
     bool premierDeplacement;
 
 };
+}
 
 #endif // PIECE_H

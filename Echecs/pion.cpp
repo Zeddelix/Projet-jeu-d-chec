@@ -5,11 +5,13 @@
 #include <QPoint>
 #include <QVector>
 
-Pion::Pion(const bool couleur,QPixmap image, const QString nom) : piece{couleur,image,nom}
+namespace chest {
+
+pion::pion(const bool couleur,QPixmap image, const QString nom) : piece{couleur,image,nom}
 {}
 
 
-bool Pion::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
+bool pion::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
     int x = arrivee->x() - depart->x();
     int y = arrivee->y() - depart->y();
@@ -47,6 +49,8 @@ bool Pion::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const
         }
     }
     return false;
+
+}
 
 }
 

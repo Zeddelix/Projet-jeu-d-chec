@@ -6,15 +6,15 @@
 #include <QPoint>
 #include <QVector>
 #include <QtWidgets/QWidget>
-#include <partie.h>
+#include "partie.h"
 
 namespace chest {
 
 class fou : public piece
 {
 public:
-    fou(bool couleur, QString image, QString nom);
-    virtual bool peutDeplacer(const QVector<QVector<unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
+    fou(bool couleur, QPixmap image, QString nom);
+    virtual bool peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 
 
 private:
@@ -23,6 +23,6 @@ private:
 
 
 };
-#endif // FOU_H
 
 }
+#endif // FOU_H

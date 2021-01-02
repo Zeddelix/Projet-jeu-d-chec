@@ -6,6 +6,8 @@
 
 #include "partie.h"
 
+namespace chest {
+
 class roi : public piece
 {
 public:
@@ -13,4 +15,6 @@ public:
     virtual bool peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 };
 
+
+}
 #endif // KING_H

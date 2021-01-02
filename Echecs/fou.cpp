@@ -5,17 +5,18 @@
 #include <QObject>
 #include <QPoint>
 #include <QVector>
-#include <QtWidgets/QWidget>
+#include <QWidget>
 #include <partie.h>
 
 namespace chest {
-fou::fou(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
 
-bool fou::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override
+fou::fou(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
+{}
+
+bool fou::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
-    bool deplacement = false;
-    int xDepart = depart.x(), yDepart = depart.y();
-    int xArrive = arrive.x(), yArrive= arrive.y();
+    int xDepart = depart -> x(), yDepart = depart -> y();
+    int xArrive = arrivee -> x(), yArrive= arrivee -> y();
 
     if(xDepart == xArrive)
         return false;
@@ -39,13 +40,12 @@ bool fou::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, const 
     }
 
     if(xArrive == xCalcul){
-        if(p[xCalcul][yCalcul] != nullptr)){
-            return p[xCalcul][yCalcul] -> color != p[xDepart][yDepart] -> color;
-        }
-        else return true;
+        if(p[xCalcul][yCalcul] != nullptr)
+            return p[xCalcul][yCalcul] -> couleur() != couleur;
+        else
+            return true;
     }
     else return false;
-
 
 }
 

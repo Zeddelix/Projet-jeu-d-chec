@@ -1,5 +1,8 @@
 #include "piece.h"
 
+namespace chest {
+
+
 piece::piece(const bool couleur,QPixmap image,QString nom) :  d_nom{nom}, d_couleur{couleur}, d_image{image}
 {}
 
@@ -45,4 +48,6 @@ QVector<QPoint> piece::tabDeplacementPossible (const QVector<QVector<std::unique
     }
 
     return tabDeplacePossible;
+}
+
 }

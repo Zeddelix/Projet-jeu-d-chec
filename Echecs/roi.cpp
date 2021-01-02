@@ -1,5 +1,6 @@
 #include "roi.h"
 
+namespace chest {
 
 roi::roi(const bool couleur,QPixmap image, const QString nom) : piece{couleur,image,nom}
 {}
@@ -37,3 +38,5 @@ bool roi::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &P, const 
 //le roque, qui permet le déplacement simultané du roi et de l'une des tours
 //la prise en passant, qui permet une capture particulière des pions 
 //(sauf roi) la promotion des pions, qui permet de les transformer en une pièce maîtresse de son choix (sauf le roi) lorsqu'ils atteignent la dernière rangée de l'échiquier
+
+}

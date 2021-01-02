@@ -6,6 +6,8 @@
 #include "piece.h"
 #include <vector>
 
+namespace chest {
+
 class partie
 {
 public:
@@ -19,4 +21,6 @@ private:
     //d_plateau(std::unique_ptr<piece>);//QPointer est un pointeur interlligent
 };
 
+
+}
 #endif // PARTIE_H
