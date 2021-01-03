@@ -1,0 +1,11 @@
+debug/cavalier.o
+debug/dame.o
+debug/fenetreconnexion.o
+debug/fou.o
+debug/main.o
+debug/partie.o
+debug/piece.o
+debug/pion.o
+debug/roi.o
+debug/tour.o
+debug/moc_fenetreconnexion.o

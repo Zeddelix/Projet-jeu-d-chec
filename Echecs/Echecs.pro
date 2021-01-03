@@ -10,6 +10,7 @@ CONFIG -= app_bundle
 SOURCES += \
         cavalier.cpp \
         dame.cpp \
+        fenetreconnexion.cpp \
         fou.cpp \
         main.cpp \
         partie.cpp \
@@ -26,6 +27,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     cavalier.h \
     dame.h \
+    fenetreconnexion.h \
     fou.h \
     partie.h \
     piece.h \
