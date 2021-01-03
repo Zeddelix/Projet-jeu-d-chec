@@ -36,3 +36,6 @@ HEADERS += \
     tour.h
 
 QT += widgets
+
+DISTFILES += \
+    PionNoir.png

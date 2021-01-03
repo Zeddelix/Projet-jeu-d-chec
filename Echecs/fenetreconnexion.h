@@ -14,7 +14,7 @@ public:
     fenetreConnexion(QWidget *parent=nullptr);
 private:
     QWidget* d_parent;
-    chest::partie* d_p;
+    chest::partie d_partie;
     void paintEvent(QPaintEvent *event);
 };
 

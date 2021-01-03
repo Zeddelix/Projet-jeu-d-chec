@@ -6,67 +6,121 @@
 #include "cavalier.h"
 #include "fou.h"
 #include "pion.h"
-#include "QMessageBox"
+#include "QPixmap"
+#include <QDebug>
+#include <QMessageBox>
+#include <QWidget>
+#include <QLabel>
 
 //initialisation de la partie càd du plateau et des pièces
 chest::partie::partie()
 {
-    QPixmap image; //a enlever
+    QString path = "C:/Codage/Echec/Projet-jeu-d-chec/Echecs/";
+    bool color = 0;
+    QString colorName = "Noir";
+    QPixmap pionImage = QPixmap(path + "Pion" + colorName +".png");
+    QPixmap tourImage = QPixmap(path + "Tour" + colorName +".png");
+    QPixmap cavalierImage = QPixmap(path + "Cavalier" + colorName +".png");
+    QPixmap fouImage = QPixmap(path + "Fou" + colorName +".png");
+    QPixmap roiImage = QPixmap(path + "Roi" + colorName +".png");
+    QPixmap dameImage = QPixmap(path + "Dame" + colorName +".png");
+
     //ajouter les types dès qu'ils seront ajouter au projet
     //auto d = std::make_unique<roi>(0,image,"tour1");
     //d_plateau[0][0] = std::make_unique<roi>(0,image,"tour1");
 
     d_plateau.resize(8);
 
-    d_plateau[0].push_back(std::make_unique <tour>(0,image,"tour1"));
-    d_plateau[0].push_back(std::make_unique <cavalier>(0,image,"cavalier1"));
-    d_plateau[0].push_back(std::make_unique <fou>(0,image,"fou1"));
-    d_plateau[0].push_back(std::make_unique <roi>(0,image,"dame"));
-    d_plateau[0].push_back(std::make_unique <roi>(0,image,"roi"));
-    d_plateau[0].push_back(std::make_unique <fou>(0,image,"fou2"));
-    d_plateau[0].push_back(std::make_unique <cavalier>(0,image,"cavalier2"));
-    d_plateau[0].push_back(std::make_unique <tour>(0,image,"tour2"));
+    d_plateau[0].push_back(std::make_unique <tour>(0, tourImage,"tour1"));
+    d_plateau[0].push_back(std::make_unique <cavalier>(0,cavalierImage,"cavalier1"));
+    d_plateau[0].push_back(std::make_unique <fou>(0,fouImage,"fou1"));
+    d_plateau[0].push_back(std::make_unique <roi>(0,dameImage,"dame"));
+    d_plateau[0].push_back(std::make_unique <roi>(0,roiImage,"roi"));
+    d_plateau[0].push_back(std::make_unique <fou>(0,fouImage,"fou2"));
+    d_plateau[0].push_back(std::make_unique <cavalier>(0,cavalierImage,"cavalier2"));
+    d_plateau[0].push_back(std::make_unique <tour>(0,tourImage,"tour2"));
 
-    d_plateau[1].push_back(std::make_unique <pion>(0,image,"pion1"));
-    d_plateau[1].push_back(std::make_unique <pion>(0,image,"pion2"));
-    d_plateau[1].push_back(std::make_unique <pion>(0,image,"pion3"));
-    d_plateau[1].push_back(std::make_unique <pion>(0,image,"pion4"));
-    d_plateau[1].push_back(std::make_unique <pion>(0,image,"pion5"));
-    d_plateau[1].push_back(std::make_unique <pion>(0,image,"pion6"));
-    d_plateau[1].push_back(std::make_unique <pion>(0,image,"pion7"));
-    d_plateau[1].push_back(std::make_unique <pion>(0,image,"pion8"));
+    d_plateau[1].push_back(std::make_unique <pion>(0,pionImage,"pion1"));
+    d_plateau[1].push_back(std::make_unique <pion>(0,pionImage,"pion2"));
+    d_plateau[1].push_back(std::make_unique <pion>(0,pionImage,"pion3"));
+    d_plateau[1].push_back(std::make_unique <pion>(0,pionImage,"pion4"));
+    d_plateau[1].push_back(std::make_unique <pion>(0,pionImage,"pion5"));
+    d_plateau[1].push_back(std::make_unique <pion>(0,pionImage,"pion6"));
+    d_plateau[1].push_back(std::make_unique <pion>(0,pionImage,"pion7"));
+    d_plateau[1].push_back(std::make_unique <pion>(0,pionImage,"pion8"));
 
     d_plateau[2].resize(8);
     d_plateau[3].resize(8);
     d_plateau[4].resize(8);
     d_plateau[5].resize(8);
 
-    d_plateau[6].push_back(std::make_unique <pion>(1,image,"pion1"));
-    d_plateau[6].push_back(std::make_unique <pion>(1,image,"pion2"));
-    d_plateau[6].push_back(std::make_unique <pion>(1,image,"pion3"));
-    d_plateau[6].push_back(std::make_unique <pion>(1,image,"pion4"));
-    d_plateau[6].push_back(std::make_unique <pion>(1,image,"pion5"));
-    d_plateau[6].push_back(std::make_unique <pion>(1,image,"pion6"));
-    d_plateau[6].push_back(std::make_unique <pion>(1,image,"pion7"));
-    d_plateau[6].push_back(std::make_unique <pion>(1,image,"pion8"));
+    colorName = "Blanc";
+    pionImage = QPixmap(path + "Pion" + colorName +".png");
+    tourImage = QPixmap(path + "Tour" + colorName +".png");
+    cavalierImage = QPixmap(path + "Cavalier" + colorName +".png");
+    fouImage = QPixmap(path + "Fou" + colorName +".png");
+    roiImage = QPixmap(path + "Roi" + colorName +".png");
+    dameImage = QPixmap(path + "Dame" + colorName +".png");
 
-    d_plateau[7].push_back(std::make_unique <tour>(1,image,"tour1"));
-    d_plateau[7].push_back(std::make_unique <cavalier>(1,image,"cavalier1"));
-    d_plateau[7].push_back(std::make_unique <fou>(1,image,"fou1"));
-    d_plateau[7].push_back(std::make_unique <roi>(1,image,"dame"));
-    d_plateau[7].push_back(std::make_unique <roi>(1,image,"roi"));
-    d_plateau[7].push_back(std::make_unique <fou>(1,image,"fou2"));
-    d_plateau[7].push_back(std::make_unique <cavalier>(1,image,"cavalier2"));
-    d_plateau[7].push_back(std::make_unique <tour>(1,image,"tour2"));
+    d_plateau[6].push_back(std::make_unique <pion>(1,pionImage,"pion1"));
+    d_plateau[6].push_back(std::make_unique <pion>(1,pionImage,"pion2"));
+    d_plateau[6].push_back(std::make_unique <pion>(1,pionImage,"pion3"));
+    d_plateau[6].push_back(std::make_unique <pion>(1,pionImage,"pion4"));
+    d_plateau[6].push_back(std::make_unique <pion>(1,pionImage,"pion5"));
+    d_plateau[6].push_back(std::make_unique <pion>(1,pionImage,"pion6"));
+    d_plateau[6].push_back(std::make_unique <pion>(1,pionImage,"pion7"));
+    d_plateau[6].push_back(std::make_unique <pion>(1,pionImage,"pion8"));
+
+    d_plateau[7].push_back(std::make_unique <tour>(1,tourImage,"tour1"));
+    d_plateau[7].push_back(std::make_unique <cavalier>(1,cavalierImage,"cavalier1"));
+    d_plateau[7].push_back(std::make_unique <fou>(1,fouImage,"fou1"));
+    d_plateau[7].push_back(std::make_unique <roi>(1,dameImage,"dame"));
+    d_plateau[7].push_back(std::make_unique <roi>(1,roiImage,"roi"));
+    d_plateau[7].push_back(std::make_unique <fou>(1,fouImage,"fou2"));
+    d_plateau[7].push_back(std::make_unique <cavalier>(1,cavalierImage,"cavalier2"));
+    d_plateau[7].push_back(std::make_unique <tour>(1,tourImage,"tour2"));
 
 }
 
-void chest::partie::afficher()const
+void chest::partie::afficher(QLabel *label)const
 {
+    afficherCase(1, 1, label);
+
+    /*for(int j = 0; j < 8; ++j){
+        for(int i = 0; i < 8; ++i){
+            if(d_plateau[i][j] != nullptr){
+
+                qDebug() << 600+i*100 << 100+j*100 << " est " << d_plateau[i][j]->nom();
+                QPixmap piece = d_plateau[i][j]->image();
+                label->setPixmap(piece);
+                label->move(600+i*100, 100+j*100);
+                label->resize(label->pixmap()->size());
+                label->show();
+            }
+            else
+                qDebug() << i << j << " est vide.";
+        }
+    }*/
+}
+
+void chest::partie::afficherCase(int i, int j, QLabel *label)const
+{
+    QPixmap piece = d_plateau[i][j]->image();
+    label->setPixmap(piece);
+    label->move(600+i*100, 100+j*100);
+    //label->resize(label->pixmap()->size());
+
+    label->show();
+
 }
 
 void chest::partie::affichageCase(QPoint *c)const
 {}
+
+std::vector<std::vector<std::unique_ptr<chest::piece>>> & chest::partie::getPlateau()
+{
+    return d_plateau;
+}
 
 void chest::partie::deplacePiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *depart,QPoint *arrivee,bool joueur)
 {
@@ -74,38 +128,21 @@ void chest::partie::deplacePiece(std::vector<std::vector<std::unique_ptr<chest::
 }
 
 
+
+
 bool chest::partie::estVide(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur) //verrifie que la piece appartient au joueur à qui c'est le tour
 {
-    if (p[depart.x()][depart.y()]==nullptr)//cas case vide
-    {
-        return true;
-    }
-
-    return false;
-
+return p[depart.x()][depart.y()]==nullptr;
 }
 
 bool chest::partie::pionCorrect(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur)
 {
-    if(p[depart.x()][depart.y()]->couleur() != joueur)
-    {
-        return false;
-    }
-    else
-        return true;
-
+    return p[depart.x()][depart.y()]->couleur() == joueur;
 }
 
 bool chest::partie::estUnAdversaire(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur)
 {
-     if (p[depart.x()][depart.y()]->couleur()==joueur)//cas pion de son équipe
-        {
-         return false;
-        }
-        else    //cas pion adverse
-        {
-            return true;
-        }
+    return p[depart.x()][depart.y()]->couleur()!=joueur;
 }
 
 bool chest::partie::selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece> > > &p, QPoint *depart, QPoint *arrivee, bool joueur)
