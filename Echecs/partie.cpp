@@ -62,7 +62,8 @@ chest::partie::partie()
 }
 
 void chest::partie::afficher()const
-{}
+{
+}
 
 void chest::partie::affichageCase(QPoint *c)const
 {}
@@ -120,7 +121,14 @@ bool chest::partie::selectionneSaPiece(std::vector<std::vector<std::unique_ptr<c
    {
         if(pionCorrect(p,*depart,joueur) == false)
         {
-
+            return true;
+        }
+        else
+        {
+            QMessageBox msgBox;
+            msgBox.setText("Ce n'est votre pion.");
+            msgBox.exec();
+            return false;
         }
    }
 }
