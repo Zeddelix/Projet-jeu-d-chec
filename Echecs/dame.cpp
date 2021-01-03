@@ -10,6 +10,4 @@ dame::dame(bool couleur, QPixmap image, QString nom) : tour{couleur,image,nom} ,
     return fou::peutDeplacer(p,depart,arrivee,couleur) || tour::peutDeplacer(p,depart,arrivee,couleur);
 
  }
-
-
 }
