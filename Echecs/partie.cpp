@@ -1,6 +1,5 @@
 #include "partie.h"
 #include <iostream>
-/** a supprimer*/
 #include "roi.h"
 #include "tour.h"
 #include "cavalier.h"
@@ -15,7 +14,7 @@
 //initialisation de la partie càd du plateau et des pièces
 chest::partie::partie()
 {
-    QString path = "C:/Codage/Echec/Projet-jeu-d-chec/Echecs/";
+    QString path = "../Echecs/Images_pieces/"; // Chemin relatif en partant du dossier Build
     bool color = 0;
     QString colorName = "Noir";
     QPixmap pionImage = QPixmap(path + "Pion" + colorName +".png");

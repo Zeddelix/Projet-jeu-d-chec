@@ -38,4 +38,15 @@ HEADERS += \
 QT += widgets
 
 DISTFILES += \
-    PionNoir.png
+    CavalierBlanc.png \
+    CavalierNoir.png \
+    DameBlanc.png \
+    DameNoir.png \
+    FouBlanc.png \
+    FouNoir.png \
+    PionBlanc.png \
+    PionNoir.png \
+    RoiBlanc.png \
+    RoiNoir.png \
+    TourBlanc.png \
+    TourNoir.png
