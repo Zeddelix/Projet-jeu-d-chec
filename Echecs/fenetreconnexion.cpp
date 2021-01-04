@@ -3,11 +3,14 @@
 #include <QGraphicsView>
 #include <QLabel>
 #include <QGridLayout>
+#include <QMouseEvent>
+#include <QMessageBox>
 
 fenetreConnexion::fenetreConnexion(QWidget *parent):QMainWindow(),d_parent{parent}, d_partie{chest::partie()}
 {
     setMinimumSize(1920,1080);
     setPalette(Qt::darkBlue);
+    QObject::connect(this,SIGNAL(Click()),this,SLOT(aClick()));
 }
 
 void fenetreConnexion::paintEvent(QPaintEvent *event)
@@ -45,4 +48,12 @@ void fenetreConnexion::paintEvent(QPaintEvent *event)
         }
     }
 
+}
+
+void fenetreConnexion::mousePressEvent(QMouseEvent *event)
+{
+    if (event->button() == Qt::LeftButton) {
+        QPoint ptsCourant = event->pos();
+        //setPoint(ptsCourant);
+    }
 }

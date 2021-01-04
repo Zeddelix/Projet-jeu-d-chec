@@ -22,8 +22,9 @@ public:
     bool pionCorrect(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur);
     bool estUnAdversaire(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur);
     bool selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *depart,QPoint *arrivee,bool joueur);
-
-
+    QPoint point() const;
+    void setPoint(QPoint point);
+    QPoint d_dernierPoint;
 private:
     std::vector<std::vector<std::unique_ptr<piece>>> d_plateau;
     //d_plateau(std::unique_ptr<piece>);//QPointer est un pointeur interlligent

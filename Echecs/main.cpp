@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
    // QPixmap lol;
 
     //test deplacePiece//
+    /*
     std::vector<std::vector<std::unique_ptr<chest::piece>>> p;
     p.resize(8);
     p[0].push_back(nullptr);
@@ -22,6 +23,7 @@ int main(int argc, char *argv[])
     QPoint p1{0,0};
     chest::partie game;
     game.estVide(p,p1,0);
+    */
     fenetreConnexion f(nullptr);
      //f.isFullScreen();
     f.show();

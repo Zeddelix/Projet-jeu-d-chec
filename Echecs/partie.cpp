@@ -169,4 +169,11 @@ bool chest::partie::selectionneSaPiece(std::vector<std::vector<std::unique_ptr<c
    }
 }
 
-
+QPoint chest::partie::point() const
+{
+    return d_dernierPoint;
+}
+void chest::partie::setPoint(QPoint point)
+{
+    d_dernierPoint = point;
+}
