@@ -1,32 +1,34 @@
 #include "pion.h"
+#include "piece.h"
 #include <QString>
 #include <QObject>
 #include <QPoint>
 #include <QVector>
 
-Pion::Pion(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
+namespace chest {
+
+pion::pion(const bool couleur,QPixmap image, const QString nom) : piece{couleur,image,nom}
 {}
 
 
-
-bool Pion::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, QPoint casDep, QPoint casArriv, const bool couleur)
+bool pion::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
-    int x = casArriv.x()-casDep.x();
-    int y = casArriv.y() - casDep.y();
+    int x = arrivee->x() - depart->x();
+    int y = arrivee->y() - depart->y();
 
     if (couleur==0)//le pion est blanc, blanc en bas
     {
         if (x==0 && y==1)
             {
-            if (P.getPiece(casArriv.x(), casArriv.y()).isEmpty()) return true; // La case +1 est libre
+            if (p[arrivee->x()][arrivee->y()]==nullptr) return true; // La case +1 est libre
             }
-        if (x==0 && y==2 && AEteDeplace()==false)
+        if (x==0 && y==2 && depart->y()==1)
         {
-            if(P.getPiece(casArriv.x(), casArriv.y()-1).isEmpty() && P.getPiece(casArriv.x(), casArriv.y()).isEmpty()) return true; // les cases +1 et +2 sont libres)
+            if( p[arrivee->x()][arrivee->y()-1]==nullptr && p[arrivee->x()][arrivee->y()]==nullptr) return true; // les cases +1 et +2 sont libres)
         }
         if ((x==1 && y==1) || (x==-1 && y==1))
         {
-            if (P.getPiece(casArriv.x(), casArriv.y()).couleur==1) return true;//bouffer en diagonale
+            if ( p[arrivee->x()][arrivee->y()] -> couleur() ==1 ) return true;//bouffer en diagonale
         }
     }
 
@@ -35,21 +37,21 @@ bool Pion::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, QPoin
     {
         if (x==0 && y==-1)
             {
-            if (P.getPiece(casArriv.x(), casArriv.y()).isEmpty()) return true; // La case -1 est libre
+            if (p[arrivee->x()][arrivee->y()]==nullptr) return true; // La case -1 est libre
             }
-        if (x==0 && y==-2 && AEteDeplace()==false)
+        if (x==0 && y==-2 && depart->y()==6)
         {
-            if(P.getPiece(casArriv.x(), casArriv.y()+1).isEmpty() && P.getPiece(casArriv.x(), casArriv.y()).isEmpty()) return true; // les cases -1 et -2 sont libres)
+            if(p[arrivee->x()][arrivee->y()+1]==nullptr && p[arrivee->x()][arrivee->y()]==nullptr) return true; // les cases -1 et -2 sont libres)
         }
         if ((x==1 && y==-1) || (x==-1 && y==-1))
         {
-            if (P.getPiece(casArriv.x(), casArriv.y()).couleur==0) return true; //bouffer en diagonale
+            if (p[arrivee->x()][arrivee->y()]->couleur()==0) return true; //bouffer en diagonale
         }
     }
     return false;
 
-     }
-
+}
 
 }
+
 

@@ -4,14 +4,17 @@
 #include <QPoint>
 
 
+namespace chest {
 
-Cavalier::Cavalier(bool couleur, QString image, QString nom) : piece{couleur,image,nom}
+cavalier::cavalier(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
 {}
 
-bool Cavalier::peutDeplacer(const QVector<QVector<std::unique_ptr<piece>>> &p, QPoint casDep, QPoint casArriv, const bool couleur)
+bool cavalier::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
-    int x = casArriv.x() - casArriv.y() ;
-    int y = casArriv.y() - casDep.y();
-    if ((abs(x==1) && abs(y==2) || (abs(x==2) && abs(y==1)) && (p.getPiece(casArriv.x(), casArriv.y()).isEmpty()) || p.getPiece(casArriv.x(), casArriv.y()).couleur()!=couleur) return true;
+    int x = depart->x() - arrivee->x();
+    int y = depart->y() - arrivee->y();
+    if ((abs(x==1) && abs(y==2) || (abs(x==2) && abs(y==1)) && ((p[arrivee->x()][arrivee->y()])==nullptr)) || ( (p[arrivee->x()][arrivee->y()]->couleur()!=couleur))) return true;
     else return false;
+}
+
 }

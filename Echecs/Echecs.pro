@@ -1,6 +1,6 @@
 QT -= gui
 
-CONFIG += c++11 console
+CONFIG += c++14 console
 CONFIG -= app_bundle
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -9,8 +9,15 @@ CONFIG -= app_bundle
 
 SOURCES += \
         cavalier.cpp \
+        dame.cpp \
+        fenetreconnexion.cpp \
+        fou.cpp \
         main.cpp \
-        pion.cpp
+        partie.cpp \
+        piece.cpp \
+        pion.cpp \
+        roi.cpp \
+        tour.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -19,4 +26,27 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 HEADERS += \
     cavalier.h \
-    pion.h
+    dame.h \
+    fenetreconnexion.h \
+    fou.h \
+    partie.h \
+    piece.h \
+    pion.h \
+    roi.h \
+    tour.h
+
+QT += widgets
+
+DISTFILES += \
+    CavalierBlanc.png \
+    CavalierNoir.png \
+    DameBlanc.png \
+    DameNoir.png \
+    FouBlanc.png \
+    FouNoir.png \
+    PionBlanc.png \
+    PionNoir.png \
+    RoiBlanc.png \
+    RoiNoir.png \
+    TourBlanc.png \
+    TourNoir.png

@@ -1,22 +1,20 @@
 #ifndef CAVALIER_H
 #define CAVALIER_H
-
+#include "partie.h"
 #include <QObject>
+#include <QWidget>
 
-class Cavalier : public Piece
+namespace chest {
+
+class cavalier : public piece
 {
 public:
-    Cavalier(bool couleur, QString image, QString nom);
-    ~Cavalier();
-    virtual bool peutDeplacer(const Plateau& P, QPoint depart, QPoint arrivee) override;
-
-
-private:
-    QPixmap* d_image;
-    QString d_nom;
-
+    cavalier(bool couleur, QPixmap image, QString nom);
+    virtual bool peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 
 };
 
 
 #endif // CAVALIER_H
+
+}
