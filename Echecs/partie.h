@@ -28,9 +28,6 @@ public:
 private:
     std::vector<std::vector<std::unique_ptr<piece>>> d_plateau;
     //d_plateau(std::unique_ptr<piece>);//QPointer est un pointeur interlligent
-friend class fenetreconnexion;
-
-
 };
 
 
