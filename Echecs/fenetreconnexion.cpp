@@ -10,7 +10,7 @@ fenetreConnexion::fenetreConnexion(QWidget *parent):QMainWindow(),d_parent{paren
 {
     setMinimumSize(1920,1080);
     setPalette(Qt::darkBlue);
-    QObject::connect(this,SIGNAL(Click()),this,SLOT(aClick()));
+
 }
 
 void fenetreConnexion::paintEvent(QPaintEvent *event)
