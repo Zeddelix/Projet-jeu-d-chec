@@ -121,6 +121,9 @@ std::vector<std::vector<std::unique_ptr<chest::piece>>> & chest::partie::getPlat
     return d_plateau;
 }
 
+
+
+
 void chest::partie::deplacePiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *depart,QPoint *arrivee,bool joueur)
 {
 

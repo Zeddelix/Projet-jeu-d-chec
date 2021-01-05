@@ -5,6 +5,9 @@
 #include <QGridLayout>
 #include <QMouseEvent>
 #include <QMessageBox>
+#include <partie.h>
+#include <cmath>
+
 
 fenetreConnexion::fenetreConnexion(QWidget *parent):QMainWindow(),d_parent{parent}, d_partie{chest::partie()}
 {
@@ -54,6 +57,15 @@ void fenetreConnexion::mousePressEvent(QMouseEvent *event)
 {
     if (event->button() == Qt::LeftButton) {
         QPoint ptsCourant = event->pos();
-        //setPoint(ptsCourant);
+        std::cout << ptsCourant.y()<< std::endl << ptsCourant.x() << std::endl; // Affiche les coordonnées dans la console
+        double XPtCourant = floor((ptsCourant.x()-600)/100) ;
+        double YPtCourant = floor((ptsCourant.y()-100)/100) ;
+        std::cout << YPtCourant << std::endl << XPtCourant << std::endl;
+        QString nomPieceCliquee = d_partie.getPlateau()[YPtCourant][XPtCourant]->nom() ;
+        std::cout << nomPieceCliquee.toStdString() << std::endl;
+
+
+
     }
 }
+
