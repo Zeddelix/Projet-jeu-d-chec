@@ -10,7 +10,10 @@
 
 namespace chest {
 tour::tour(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
-{}
+{    d_picture->setPixmap(image);
+     //d_picture->move(600+i*100, 100+j*100);
+     d_picture->resize(d_picture->pixmap()->size());
+     d_picture->show();}
 
 bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {

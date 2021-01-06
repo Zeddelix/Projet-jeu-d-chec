@@ -3,7 +3,10 @@
 namespace chest {
 
 roi::roi(const bool couleur,QPixmap image, const QString nom) : piece{couleur,image,nom}
-{}
+{    d_picture->setPixmap(image);
+     //d_picture->move(600+i*100, 100+j*100);
+     d_picture->resize(d_picture->pixmap()->size());
+     d_picture->show();}
 
 
 //precondition: arrivee et depart sont sur le plateau (arrivee tombe à l'eau)

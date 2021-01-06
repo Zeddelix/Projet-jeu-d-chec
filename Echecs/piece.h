@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QWidget>
 #include <memory>
+#include <QLabel>
 
 namespace chest {
 
@@ -18,6 +19,7 @@ public:
     bool couleur() const;
     QPixmap *image() const;
     QVector <QPoint> tabDeplacementPossible (const std::vector<std::vector<std::unique_ptr<piece>>> &p, QPoint *casDep);
+    QLabel* d_picture;
 private:
     QString d_nom;
     bool d_couleur;
