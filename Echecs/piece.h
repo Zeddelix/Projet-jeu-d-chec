@@ -13,11 +13,11 @@ class piece
 public:
     piece(const bool couleur,QPixmap image,QString nom);
     virtual ~piece();
-    virtual bool peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p,const QPoint *dep, const QPoint *arr,const bool couleur) = 0;
+    virtual bool peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau,const QPoint *caseDepart, const QPoint *caseArrive) = 0;
     QString nom() const;
     bool couleur() const;
     QPixmap image() const;
-    QVector <QPoint> tabDeplacementPossible (const std::vector<std::vector<std::unique_ptr<piece>>> &p, QPoint *casDep);
+    QVector <QPoint> tabDeplacementPossible (const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, QPoint *caseDepart);
 private:
     QString d_nom;
     bool d_couleur;

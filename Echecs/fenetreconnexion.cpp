@@ -37,18 +37,18 @@ void fenetreConnexion::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
 
-    for(int j=1;j<=4;++j)
+    for(int j = 1 ; j <= 4; ++j)
     {
-        for(int i=1;i<=4;++i)
+        for(int i = 1; i <= 4 ; ++i)
         {
             painter.fillRect(400+100*2*i,-100+100*2*j,100,100,Qt::white);
             painter.fillRect(500+100*2*i,100*2*j,100,100,Qt::white);
         }
     }
 
-    for(int j=1;j<=4;++j)
+    for(int j = 1; j <= 4; ++j)
     {
-        for(int i=1;i<=4;++i)
+        for(int i = 1;i <= 4; ++i)
         {
             painter.fillRect(500+100*2*i,-100+100*2*j,100,100,Qt::darkGray);
             painter.fillRect(400+100*2*i,100*2*j,100,100,Qt::darkGray);
@@ -78,12 +78,10 @@ void fenetreConnexion::mousePressEvent(QMouseEvent *event)
         d_partie.setPoint(ptCourant);
         QPoint pointCourant = d_partie.point();
 
-        if(d_action == false)
+        if(!d_action)
         {
             if(d_partie.selectionneSaPiece(d_partie.getPlateau(),&pointCourant,1))
-            {
                 d_action = true;
-            }
         }
         else
         {

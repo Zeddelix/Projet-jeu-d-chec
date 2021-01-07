@@ -7,28 +7,32 @@ roi::roi(const bool couleur,QPixmap image, const QString nom) : piece{couleur,im
 
 
 //precondition: arrivee et depart sont sur le plateau (arrivee tombe à l'eau)
-bool roi::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &P, const QPoint *depart,const QPoint *arrivee,const bool couleur)//ici P est inutile
+bool roi::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, const QPoint *caseDepart,const QPoint *caseArrive)//ici P est inutile
 {
-    bool deplacement=0;
-    int xD=depart->x();
-    int yD=depart->y();
-    int xA=arrivee->y();
-    int yA=arrivee->y();
+   int departX = caseDepart->x();
+   int departY = caseDepart->y();
+   int arriveX = caseArrive->x();
+   int arriveY = caseArrive->y();
 
-    if(xA==xD && (yA==yD+1 || yA==yD-1))
-    {
-        deplacement=1;
-    }
-    else if (xA==xD-1 && (yA==yD+1 || yA==yD || yA==yD-1))
-    {
-        deplacement=1;
-    }
-    else if (xA==xD+1 && (yA==yD+1 || yA==yD || yA==yD-1))
-    {
-        deplacement=1;
-    } 
-    return deplacement;
+   if(arriveX == departX && (arriveY == departY+1 || arriveY == departY-1))
+   {
+       return false;
+   }
+
+   if (arriveX == departX-1 && (arriveY == departY+1 || arriveY == departY || arriveY == departY-1))
+   {
+       return false;
+   }
+
+   if (arriveX == departX+1 && (arriveY == departY+1 || arriveY == departY || arriveY == departY-1))
+   {
+       return false;
+   }
+
+   return true;
+
 }
+
 
 //interdit de mettre son roi en echec
 //interdit d

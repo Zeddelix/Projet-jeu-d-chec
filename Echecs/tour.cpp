@@ -12,10 +12,10 @@ namespace chest {
 tour::tour(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
 {}
 
-bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
+bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, const QPoint *caseDepart, const QPoint *caseArrive)
 {
-    int xDepart = depart -> x(), yDepart = depart -> y();
-    int xArrive = arrivee -> x(), yArrive= arrivee -> y();
+    int xDepart = caseDepart -> x(), yDepart = caseDepart -> y();
+    int xArrive = caseArrive -> x(), yArrive = caseArrive -> y();
     int xPas, yPas;
     int xCalcul, yCalcul;
 
@@ -33,18 +33,16 @@ bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &
     xCalcul = xDepart + xPas;
     yCalcul = yDepart + yPas;
 
-    while(xArrive != xCalcul && yArrive != yCalcul && p[xCalcul][yCalcul] == nullptr){
+    while(xArrive != xCalcul && yArrive != yCalcul && plateau[xCalcul][yCalcul] == nullptr){
         xCalcul += xPas;
         yCalcul += yPas;
     }
 
     if(xArrive == xCalcul && yArrive != yCalcul){
-        if(p[xCalcul][yCalcul] != nullptr){
-            return p[xCalcul][yCalcul] -> couleur() != couleur;
-        }
-        else return true;
+        return plateau[xCalcul][yCalcul] != nullptr;
     }
-    else return false;
+    else
+        return false;
 
 
 }
