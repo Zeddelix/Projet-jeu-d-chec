@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<<<<<<< 55685a4bf6de1a64bcc34910e7f550d2c881b48f
-<<<<<<< 55685a4bf6de1a64bcc34910e7f550d2c881b48f
-<<<<<<< Updated upstream
-<!-- Written by QtCreator 4.13.2, 2021-01-05T10:25:45. -->
-=======
-<!-- Written by QtCreator 4.13.2, 2021-01-05T15:48:47. -->
->>>>>>> Stashed changes
-=======
-<!-- Written by QtCreator 4.13.2, 2021-01-05T19:03:36. -->
-<<<<<<< 55685a4bf6de1a64bcc34910e7f550d2c881b48f
-<!-- Written by QtCreator 4.13.2, 2021-01-06T13:00:17. -->
->>>>>>> Auto stash before merge of "Gaulthier" and "origin/Gaulthier"
-=======
-<!-- Written by QtCreator 4.13.2, 2021-01-05T19:03:36. -->
->>>>>>> Problème plantage résolu
-=======
->>>>>>> Revert "Auto stash before merge of "Gaulthier" and "origin/Gaulthier""
+<!-- Written by QtCreator 4.13.2, 2021-01-04T19:59:17. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
