@@ -180,3 +180,4 @@ void chest::partie::setPoint(QPoint point)
 {
     d_dernierPoint = point;
 }
+
