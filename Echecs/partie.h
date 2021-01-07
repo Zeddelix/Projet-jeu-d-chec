@@ -17,11 +17,12 @@ public:
     void affichageCase(QPoint *c)const;//private ?
     void afficherCase(int i, int j, QLabel *label)const;//private ?
     std::vector<std::vector<std::unique_ptr<chest::piece>>>&getPlateau();
-    void deplacePiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *depart,QPoint *arrivee,bool joueur);
+    void deplacePiece(QPoint *depart,QPoint *arrivee,bool joueur);
     bool estVide(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur);
     bool pionCorrect(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur);
     bool estUnAdversaire(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur);
-    bool selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *depart,QPoint *arrivee,bool joueur);
+    bool selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *pts,bool joueur);
+    void joueTour();
     QPoint point() const;
     void setPoint(QPoint point);
     QPoint d_dernierPoint;
