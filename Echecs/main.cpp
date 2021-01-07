@@ -26,7 +26,6 @@ int main(int argc, char *argv[])
     */
     fenetreConnexion f(nullptr);
      //f.isFullScreen();
-    f.Jouer();
     f.show();
     //return a.exec();
     return n.exec();

@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QWidget>
 #include <QLabel>
+#include <cmath>
 
 //initialisation de la partie càd du plateau et des pièces
 chest::partie::partie()
@@ -124,9 +125,30 @@ std::vector<std::vector<std::unique_ptr<chest::piece>>> & chest::partie::getPlat
 
 
 
-void chest::partie::deplacePiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *depart,QPoint *arrivee,bool joueur)
+void chest::partie::deplacePiece(QPoint *depart,QPoint *arrivee,bool joueur)
 {
+    int YArrivee = floor((arrivee->x()-600)/100) ;
+    int XArrive = floor((arrivee->y()-100)/100) ;
 
+    int YDepart = floor((depart->x()-600)/100) ;
+    int XDepart = floor((depart->y()-100)/100) ;
+
+
+    //std::swap( d_plateau[XArrive][YArrivee],d_plateau[XDepart][YDepart]);
+    if(estVide(d_plateau,QPoint{XArrive,YArrivee},joueur) == false)
+    {
+        QMessageBox msgBox;
+        msgBox.setText("Case occupée.");
+        msgBox.exec();
+
+    }
+    else
+    {
+        d_plateau[XArrive][YArrivee] = move(d_plateau[XDepart][XDepart]);
+
+        d_plateau[XDepart][YDepart].reset(nullptr);
+        d_plateau[XDepart][YDepart] = nullptr;
+    }
 }
 
 
@@ -134,7 +156,7 @@ void chest::partie::deplacePiece(std::vector<std::vector<std::unique_ptr<chest::
 
 bool chest::partie::estVide(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur) //verrifie que la piece appartient au joueur à qui c'est le tour
 {
-return p[depart.x()][depart.y()]==nullptr;
+    return p[depart.x()][depart.y()]==nullptr;
 }
 
 bool chest::partie::pionCorrect(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur)
@@ -147,9 +169,9 @@ bool chest::partie::estUnAdversaire(const std::vector<std::vector<std::unique_pt
     return p[depart.x()][depart.y()]->couleur()!=joueur;
 }
 
-bool chest::partie::selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece> > > &p, QPoint *depart, QPoint *arrivee, bool joueur)
+bool chest::partie::selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece> > > &p, QPoint *point, bool joueur)
 {
-   if(estVide(p,*depart,joueur))
+   if(estVide(p,*point,joueur))
    {
        QMessageBox msgBox;
        msgBox.setText("Case vide.");
@@ -158,7 +180,7 @@ bool chest::partie::selectionneSaPiece(std::vector<std::vector<std::unique_ptr<c
    }
    else
    {
-        if(pionCorrect(p,*depart,joueur) == false)
+        if(pionCorrect(p,*point,joueur) == false)
         {
             return true;
         }
@@ -170,6 +192,12 @@ bool chest::partie::selectionneSaPiece(std::vector<std::vector<std::unique_ptr<c
             return false;
         }
    }
+}
+
+
+void chest::partie::joueTour()
+{
+
 }
 
 QPoint chest::partie::point() const
