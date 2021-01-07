@@ -109,7 +109,7 @@ void chest::partie::deplacePiece(QPoint *caseDepart,QPoint *caseArrive,bool joue
     }
     else
     {
-        d_plateau[arriveX][arriveY] = move(d_plateau[departX][departX]);
+        d_plateau[arriveX][arriveY] = move(d_plateau[departX][departY]);
         d_plateau[departX][departY].reset(nullptr);
         d_plateau[departX][departY] = nullptr;
     }
