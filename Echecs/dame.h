@@ -17,4 +17,4 @@ public:
 
 }
 
-#endif // DAME_H
+#endif

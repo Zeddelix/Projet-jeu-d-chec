@@ -13,11 +13,12 @@ namespace chest {
 fou::fou(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
 {}
 
-bool laCaseEstAtteinte(int arriveX, int absX){
+bool laCaseArriveEstAtteinte(int arriveX, int absX){
     return arriveX == absX;
 }
 
-bool fou::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *caseDepart, const QPoint *caseArrive)
+
+bool fou::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, const QPoint *caseDepart, const QPoint *caseArrive)
 {
     int departX = caseDepart -> x(), departY = caseDepart -> y();
     int arriveX = caseArrive -> x(), arriveY = caseArrive -> y();
@@ -40,7 +41,7 @@ bool fou::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p
     absX = departX + xPas;
     absY = departY + yPas;
 
-    while(!laCaseEstAtteinte(arriveX, absX) && p[absX][absY] == nullptr)
+    while(!laCaseArriveEstAtteinte(arriveX, absX) && plateau[absX][absY] == nullptr)
     {
         absX += xPas;
         absY += yPas;

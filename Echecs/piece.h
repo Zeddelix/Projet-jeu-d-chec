@@ -7,7 +7,6 @@
 
 namespace chest {
 
-/** a suprimer*/
 class piece
 {
 public:
@@ -27,4 +26,4 @@ private:
 };
 }
 
-#endif // PIECE_H
+#endif

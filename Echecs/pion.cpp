@@ -18,40 +18,40 @@ bool pion::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &
 
     bool couleur = plateau[caseDepart->x()][caseDepart->y()]->couleur();
 
-    if (couleur)//le pion est blanc, blanc en bas
+    if (couleur)
     {
         if (pasX == 0 && pasY == 1)
         {
             if (plateau[caseArrive->x()][caseArrive->y()]==nullptr)
-                return true; // La case +1 est libre
+                return true;
         }
         if (pasX == 0 && pasY == 2 && caseDepart->y() == 1)
         {
             if( plateau[caseArrive->x()][caseArrive->y()-1]==nullptr && plateau[caseArrive->x()][caseArrive->y()]==nullptr)
-                return true; // les cases +1 et +2 sont libres)
+                return true;
         }
         if ((pasX == 1 && pasY == 1) || (pasX == -1 && pasY == 1))
         {
             if (plateau[caseArrive->x()][caseArrive->y()] -> couleur() == 1)
-                return true;//bouffer en diagonale
+                return true;
         }
     }
-    else//le pion est noir, blanc en bas
+    else
     {
         if (pasX == 0 && pasY == -1)
         {
             if (plateau[caseArrive->x()][caseArrive->y()]==nullptr)
-                return true; // La case -1 est libre
+                return true;
         }
         if (pasX == 0 && pasY == -2 && caseDepart->y() == 6)
         {
             if(plateau[caseArrive->x()][caseArrive->y()+1]==nullptr && plateau[caseArrive->x()][caseArrive->y()]==nullptr)
-                return true; // les cases -1 et -2 sont libres)
+                return true;
         }
         if ((pasX==1 && pasY == -1) || (pasX == -1 && pasY == -1))
         {
             if (plateau[caseArrive->x()][caseArrive->y()]->couleur()==0)
-                return true; //bouffer en diagonale
+                return true;
         }
     }
     return false;

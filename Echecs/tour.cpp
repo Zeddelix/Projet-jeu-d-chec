@@ -12,6 +12,14 @@ namespace chest {
 tour::tour(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
 {}
 
+bool xDepartEquivalentxArrive(int xDepart, int xArrive){
+    return xDepart == xArrive;
+}
+
+bool yDepartEquivalentyArrive(int yDepart, int yArrive){
+    return yDepart == yArrive;
+}
+
 bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, const QPoint *caseDepart, const QPoint *caseArrive)
 {
     int xDepart = caseDepart -> x(), yDepart = caseDepart -> y();
@@ -20,11 +28,11 @@ bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &
     int xCalcul, yCalcul;
 
 
-	if(xDepart != xArrive){
+    if(!xDepartEquivalentxArrive(xDepart, xArrive)){
 		xPas = 1;
 		yPas = 0;
 	}
-	else if(yDepart != yArrive){
+    else if(!yDepartEquivalentyArrive(yDepart, yArrive)){
 		xPas = 0;
 		yPas = 1;
 	}
@@ -33,18 +41,14 @@ bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &
     xCalcul = xDepart + xPas;
     yCalcul = yDepart + yPas;
 
-    while(xArrive != xCalcul && yArrive != yCalcul && plateau[xCalcul][yCalcul] == nullptr){
-        xCalcul += xPas;
-        yCalcul += yPas;
+    QPoint *caseActuelle = new QPoint(xCalcul, yCalcul);
+
+    while(!xDepartEquivalentxArrive(caseActuelle->x(), xArrive) && !yDepartEquivalentyArrive(caseActuelle->y(), yArrive) && chest::partie().estVide(plateau, *caseActuelle)){
+        caseActuelle->setX(caseActuelle->x()+1);
+        caseActuelle->setY(caseActuelle->y()+1);
     }
 
-    if(xArrive == xCalcul && yArrive != yCalcul){
-        return plateau[xCalcul][yCalcul] != nullptr;
-    }
-    else
-        return false;
-
-
+    return xDepartEquivalentxArrive(caseActuelle->x(), xArrive) && yDepartEquivalentyArrive(caseActuelle->y(), yArrive);
 }
 
 }

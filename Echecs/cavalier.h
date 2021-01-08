@@ -15,6 +15,6 @@ public:
 };
 
 
-#endif // CAVALIER_H
+#endif
 
 }

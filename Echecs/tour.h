@@ -19,6 +19,6 @@ public:
 };
 
 }
-#endif // TOUR_H
+#endif
 
 
