@@ -13,41 +13,44 @@ namespace chest {
 fou::fou(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
 {}
 
-bool fou::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
+bool laCaseArriveEstAtteinte(int arriveX, int absX){
+    return arriveX == absX;
+}
+
+
+bool fou::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, const QPoint *caseDepart, const QPoint *caseArrive)
 {
-    int xDepart = depart -> x(), yDepart = depart -> y();
-    int xArrive = arrivee -> x(), yArrive= arrivee -> y();
+    int departX = caseDepart -> x(), departY = caseDepart -> y();
+    int arriveX = caseArrive -> x(), arriveY = caseArrive -> y();
 
-    if(xDepart == xArrive)
+    if(departX == arriveX){
         return false;
+    }
 
-    int xPas = xArrive - xDepart; // 2 - 0 = 2
-    int yPas = yArrive - yDepart; // 0 - 2 = -2
-    int xCalcul = abs(xPas), yCalcul = abs(yPas);
+    int xPas = arriveX - departX;
+    int yPas = arriveY - departY;
+    int absX = abs(xPas), absY = abs(yPas);
 
-    if(xCalcul != yCalcul)
+    if(absX != absY){
         return false;
+    }
 
     xPas /= abs(xPas);
     yPas /= abs(yPas);
 
-    xCalcul = xDepart + xPas;
-    yCalcul = yDepart + yPas;
+    absX = departX + xPas;
+    absY = departY + yPas;
 
-    while(xArrive != xCalcul && p[xCalcul][yCalcul] == nullptr){
-        xCalcul += xPas;
-        yCalcul += yPas;
+    while(!laCaseArriveEstAtteinte(arriveX, absX) && plateau[absX][absY] == nullptr)
+    {
+        absX += xPas;
+        absY += yPas;
     }
 
-    if(xArrive == xCalcul){
-        if(p[xCalcul][yCalcul] != nullptr)
-            return p[xCalcul][yCalcul] -> couleur() != couleur;
-        else
-            return true;
-    }
-    else return false;
+    return arriveX == absX;
 
 }
+
 
 }
 

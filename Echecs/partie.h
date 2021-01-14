@@ -13,22 +13,20 @@ class partie
 {
 public:
     partie();
-    void afficher(QLabel *label)const;
-    void affichageCase(QPoint *c)const;//private ?
-    void afficherCase(int i, int j, QLabel *label)const;//private ?
     std::vector<std::vector<std::unique_ptr<chest::piece>>>&getPlateau();
-    void deplacePiece(QPoint *depart,QPoint *arrivee,bool joueur);
-    bool estVide(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur);
-    bool pionCorrect(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur);
-    bool estUnAdversaire(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint depart, bool joueur);
-    bool selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &p,QPoint *pts,bool joueur);
+    void deplacePiece(QPoint *caseDepart,QPoint *caseArrive);
+    bool estVide(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &plateau,const QPoint caseCible) const;
+    bool pionCorrect(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &plateau,const QPoint caseDepart,const bool joueur) const;
+    bool estUnAdversaire(const std::vector<std::vector<std::unique_ptr<chest::piece>>> &plateau,const QPoint caseDepart,const bool joueur) const;
+    bool selectionneSaPiece(std::vector<std::vector<std::unique_ptr<chest::piece>>> &plateau,const QPoint *pts,const bool joueur) const;
     void joueTour();
     QPoint point() const;
+    bool getJoueur() const;
     void setPoint(QPoint point);
     QPoint d_dernierPoint;
 private:
+    bool d_actuelJoueur = 1;
     std::vector<std::vector<std::unique_ptr<piece>>> d_plateau;
-    //d_plateau(std::unique_ptr<piece>);//QPointer est un pointeur interlligent
 friend class fenetreconnexion;
 
 
@@ -36,4 +34,4 @@ friend class fenetreconnexion;
 
 
 }
-#endif // PARTIE_H
+#endif
