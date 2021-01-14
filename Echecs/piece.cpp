@@ -24,25 +24,26 @@ QPixmap piece::image() const
     return d_image;
 }
 
-QVector<QPoint> piece::tabDeplacementPossible(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, QPoint *caseDepart)
+QVector<QPoint> piece::tabDeplacementPossible (const std::vector<std::vector<std::unique_ptr<piece>>> &p, QPoint *casDep)
 {
 
-    int x = caseDepart->x();
-    int y = caseDepart->y();
-
+    int x = casDep->x();
+    int y = casDep->y();
     QVector<QPoint> tabDeplacePossible;
 
-    for(unsigned i = 0; i < plateau.size() ; i++)
+    for(unsigned i = 0;i < p.size() ; i++)
     {
-        for(unsigned j = 0; j < plateau[i].size(); j++)
+        for(unsigned j = 0; j < p[i].size();j++)
         {
 
-            QPoint *caseArrive{};
-            caseArrive->setX(x);
-            caseArrive->setY(y);
+            QPoint *arr{};
+            arr->setX(x);
+            arr->setY(y);
 
-            if (plateau[x][y]->peutDeplacer(plateau,caseDepart,caseArrive))
-                tabDeplacePossible.push_back(*caseArrive);
+            if (p[x][y]->peutDeplacer(p,casDep,arr,d_couleur))
+            {
+                tabDeplacePossible.push_back(*arr);
+            }
         }
     }
 

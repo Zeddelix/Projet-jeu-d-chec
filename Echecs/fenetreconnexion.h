@@ -1,5 +1,5 @@
-#ifndef AFFICHAGEPARTIE_H
-#define AFFICHAGEPARTIE_H
+#ifndef FENETRECONNEXION_H
+#define FENETRECONNEXION_H
 
 #include <QMainWindow>
 #include <QPainter>
@@ -7,11 +7,11 @@
 #include "partie.h"
 
 
-class affichagePartie : public QMainWindow
+class fenetreConnexion : public QMainWindow
 {
     Q_OBJECT
 public:
-    affichagePartie(QWidget *parent=nullptr);
+    fenetreConnexion(QWidget *parent=nullptr);
     void misAJour();
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -23,4 +23,4 @@ private:
     bool d_action;
 };
 
-#endif
+#endif // FENETRECONNEXION_H

@@ -12,27 +12,19 @@ namespace chest {
 tour::tour(bool couleur, QPixmap image, QString nom) : piece{couleur,image,nom}
 {}
 
-bool xDepartEquivalentxArrive(int xDepart, int xArrive){
-    return xDepart == xArrive;
-}
-
-bool yDepartEquivalentyArrive(int yDepart, int yArrive){
-    return yDepart == yArrive;
-}
-
-bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, const QPoint *caseDepart, const QPoint *caseArrive)
+bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
-    int xDepart = caseDepart -> x(), yDepart = caseDepart -> y();
-    int xArrive = caseArrive -> x(), yArrive = caseArrive -> y();
+    int xDepart = depart -> x(), yDepart = depart -> y();
+    int xArrive = arrivee -> x(), yArrive= arrivee -> y();
     int xPas, yPas;
     int xCalcul, yCalcul;
 
 
-    if(!xDepartEquivalentxArrive(xDepart, xArrive)){
+	if(xDepart != xArrive){
 		xPas = 1;
 		yPas = 0;
 	}
-    else if(!yDepartEquivalentyArrive(yDepart, yArrive)){
+	else if(yDepart != yArrive){
 		xPas = 0;
 		yPas = 1;
 	}
@@ -41,14 +33,20 @@ bool tour::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &
     xCalcul = xDepart + xPas;
     yCalcul = yDepart + yPas;
 
-    QPoint *caseActuelle = new QPoint(xCalcul, yCalcul);
-
-    while(!xDepartEquivalentxArrive(caseActuelle->x(), xArrive) && !yDepartEquivalentyArrive(caseActuelle->y(), yArrive) && chest::partie().estVide(plateau, *caseActuelle)){
-        caseActuelle->setX(caseActuelle->x()+1);
-        caseActuelle->setY(caseActuelle->y()+1);
+    while(xArrive != xCalcul && yArrive != yCalcul && p[xCalcul][yCalcul] == nullptr){
+        xCalcul += xPas;
+        yCalcul += yPas;
     }
 
-    return xDepartEquivalentxArrive(caseActuelle->x(), xArrive) && yDepartEquivalentyArrive(caseActuelle->y(), yArrive);
+    if(xArrive == xCalcul && yArrive != yCalcul){
+        if(p[xCalcul][yCalcul] != nullptr){
+            return p[xCalcul][yCalcul] -> couleur() != couleur;
+        }
+        else return true;
+    }
+    else return false;
+
+
 }
 
 }

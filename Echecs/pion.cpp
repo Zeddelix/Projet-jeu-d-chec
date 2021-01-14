@@ -11,47 +11,41 @@ pion::pion(const bool couleur,QPixmap image, const QString nom) : piece{couleur,
 {}
 
 
-bool pion::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, const QPoint *caseDepart, const QPoint *caseArrive)
+bool pion::peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur)
 {
-    int pasX = caseArrive->x() - caseDepart->x();
-    int pasY = caseArrive->y() - caseDepart->y();
+    int x = arrivee->x() - depart->x();
+    int y = arrivee->y() - depart->y();
 
-    bool couleur = plateau[caseDepart->x()][caseDepart->y()]->couleur();
-
-    if (couleur)
+    if (couleur==0)//le pion est blanc, blanc en bas
     {
-        if (pasX == 0 && pasY == 1)
+        if (x==0 && y==1)
+            {
+            if (p[arrivee->x()][arrivee->y()]==nullptr) return true; // La case +1 est libre
+            }
+        if (x==0 && y==2 && depart->y()==1)
         {
-            if (plateau[caseArrive->x()][caseArrive->y()]==nullptr)
-                return true;
+            if( p[arrivee->x()][arrivee->y()-1]==nullptr && p[arrivee->x()][arrivee->y()]==nullptr) return true; // les cases +1 et +2 sont libres)
         }
-        if (pasX == 0 && pasY == 2 && caseDepart->y() == 1)
+        if ((x==1 && y==1) || (x==-1 && y==1))
         {
-            if( plateau[caseArrive->x()][caseArrive->y()-1]==nullptr && plateau[caseArrive->x()][caseArrive->y()]==nullptr)
-                return true;
-        }
-        if ((pasX == 1 && pasY == 1) || (pasX == -1 && pasY == 1))
-        {
-            if (plateau[caseArrive->x()][caseArrive->y()] -> couleur() == 1)
-                return true;
+            if ( p[arrivee->x()][arrivee->y()] -> couleur() ==1 ) return true;//bouffer en diagonale
         }
     }
-    else
+
+
+    else//le pion est noir, blanc en bas
     {
-        if (pasX == 0 && pasY == -1)
+        if (x==0 && y==-1)
+            {
+            if (p[arrivee->x()][arrivee->y()]==nullptr) return true; // La case -1 est libre
+            }
+        if (x==0 && y==-2 && depart->y()==6)
         {
-            if (plateau[caseArrive->x()][caseArrive->y()]==nullptr)
-                return true;
+            if(p[arrivee->x()][arrivee->y()+1]==nullptr && p[arrivee->x()][arrivee->y()]==nullptr) return true; // les cases -1 et -2 sont libres)
         }
-        if (pasX == 0 && pasY == -2 && caseDepart->y() == 6)
+        if ((x==1 && y==-1) || (x==-1 && y==-1))
         {
-            if(plateau[caseArrive->x()][caseArrive->y()+1]==nullptr && plateau[caseArrive->x()][caseArrive->y()]==nullptr)
-                return true;
-        }
-        if ((pasX==1 && pasY == -1) || (pasX == -1 && pasY == -1))
-        {
-            if (plateau[caseArrive->x()][caseArrive->y()]->couleur()==0)
-                return true;
+            if (p[arrivee->x()][arrivee->y()]->couleur()==0) return true; //bouffer en diagonale
         }
     }
     return false;

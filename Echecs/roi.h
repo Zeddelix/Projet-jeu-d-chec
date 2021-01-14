@@ -12,9 +12,9 @@ class roi : public piece
 {
 public:
     roi(const bool couleur, QPixmap image,const QString nom);
-    virtual bool peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &plateau, const QPoint *caseDepart, const QPoint *caseArrive) override;
+    virtual bool peutDeplacer(const std::vector<std::vector<std::unique_ptr<piece>>> &p, const QPoint *depart, const QPoint *arrivee, const bool couleur) override;
 };
 
 
 }
-#endif
+#endif // KING_H
